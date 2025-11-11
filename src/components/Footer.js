@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
@@ -31,9 +31,11 @@ function Footer() {
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul className="footer-links">
-            <li><button onClick={() => handleScrollToSection('welcome')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Welcome</button></li>
-            <li><button onClick={() => handleScrollToSection('process')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Process</button></li>
-            <li><button onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>FAQ</button></li>
+            <li><Link to="/">Welcome</Link></li>
+            <li><Link to="/writing-process">Writing Process</Link></li>
+            <li><Link to="/resources">Resources</Link></li>
+            <li><Link to="/past-editions">Past Editions</Link></li>
+            <li><button onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>FAQs</button></li>
             <li><button onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Contact</button></li>
           </ul>
         </div>
