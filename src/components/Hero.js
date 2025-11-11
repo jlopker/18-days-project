@@ -42,7 +42,7 @@ function Hero({ onOpenModal }) {
         <h2 className="hero-title">The 18 Days Project is a writing adventure to unleash your creativity</h2>
         <p className="hero-subtitle">Generate new work. Get creative support. Make inspired progress.</p>
         <button className="hero-cta-button" onClick={onOpenModal}>
-          Join the Cocoon Edition
+          Cocoon Edition Starts 12/1/25
         </button>
       </div>
 
