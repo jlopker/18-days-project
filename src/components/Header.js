@@ -7,6 +7,14 @@ function Header() {
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
+  const handleScrollToSection = (id) => {
+    closeMobileMenu();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-content">
@@ -36,7 +44,7 @@ function Header() {
             </div>
           </div>
           <Link to="/#about" className="nav-link" onClick={closeMobileMenu}>About</Link>
-          <Link to="/#contact" className="nav-link" onClick={closeMobileMenu}>Contact</Link>
+          <button className="nav-link" onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>Contact</button>
         </nav>
       </div>
     </header>
