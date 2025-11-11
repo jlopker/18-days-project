@@ -1,8 +1,25 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleScrollToSection = (id) => {
+    // If not on home page, navigate to home page first
+    if (location.pathname !== '/') {
+      navigate('/#' + id);
+      return;
+    }
+
+    // If already on home page, scroll to section
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="footer">
@@ -14,10 +31,10 @@ function Footer() {
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul className="footer-links">
-            <li><a href="#welcome">Welcome</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><button onClick={() => handleScrollToSection('welcome')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Welcome</button></li>
+            <li><button onClick={() => handleScrollToSection('process')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Process</button></li>
+            <li><button onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>FAQ</button></li>
+            <li><button onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Contact</button></li>
           </ul>
         </div>
         <div className="footer-section">
