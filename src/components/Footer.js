@@ -25,7 +25,7 @@ function Footer() {
           <ul className="social-links">
             <li><a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>
             <li><a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://substack.com" aria-label="Substack" target="_blank" rel="noopener noreferrer">Substack</a></li>
+            <li><a href="https://the18somethingsproject.substack.com/" aria-label="Substack" target="_blank" rel="noopener noreferrer">Substack</a></li>
           </ul>
         </div>
       </div>
