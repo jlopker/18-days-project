@@ -47,7 +47,7 @@ function Resources() {
     },
     {
       name: 'Beth Pickens',
-      description: 'Offers "Homework Club" and "Parakeet," a year-long book-writing program',
+      description: 'Homework Club or year-long program for writing a book called Parakeet',
       sublinks: [
         { name: 'Homework Club', url: 'https://www.bethpickens.com/homework-club' },
         { name: 'Parakeet', url: 'https://www.bethpickens.com/parakeet' }
