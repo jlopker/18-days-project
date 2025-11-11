@@ -7,7 +7,6 @@ import Welcome from './components/Welcome';
 import CurrentEdition from './components/CurrentEdition';
 import AnnouncementBar from './components/AnnouncementBar';
 import WhoIsThis from './components/WhoIsThis';
-import Philosophy from './components/Philosophy';
 import Background from './components/Background';
 import Testimonial from './components/Testimonial';
 import Contact from './components/Contact';
@@ -25,7 +24,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
         <Welcome />
         <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <WhoIsThis />
-        <Philosophy />
         <Background />
         <Testimonial />
         <Contact />
