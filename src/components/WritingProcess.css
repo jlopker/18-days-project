@@ -7,77 +7,105 @@
   margin: 0;
 }
 
-.writing-process-content > p {
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
-  color: var(--text-light);
-  line-height: 1.85;
-  margin: 0 0 3rem 0;
+.process-section {
+  margin-bottom: 3rem;
 }
 
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2.5rem;
-  margin: 3rem 0;
+.process-section h3 {
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color);
 }
 
-.process-step {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 230, 211, 0.3) 100%);
-  padding: 2rem;
+.process-section h4 {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 2rem 0 1.5rem 0;
+}
+
+.suggestion {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(236, 211, 245, 0.2) 100%);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
   border-radius: 4px;
-  border-left: 4px solid var(--accent-color);
+  border-left: 4px solid var(--accent-peachy);
   transition: all 0.3s ease;
 }
 
-.process-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+.suggestion:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(236, 211, 245, 0.3) 100%);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.process-step h3 {
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-  font-weight: 700;
+.suggestion strong {
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   color: var(--accent-color);
-  margin: 0 0 1rem 0;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.process-step p {
+.suggestion p {
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: var(--text-light);
   line-height: 1.8;
   margin: 0;
 }
 
-.process-insight {
-  background: linear-gradient(135deg, rgba(232, 180, 166, 0.15) 0%, rgba(245, 230, 211, 0.3) 100%);
-  padding: 2.5rem;
+.partnership-section {
+  background: linear-gradient(135deg, rgba(201, 188, 70, 0.1) 0%, rgba(236, 211, 245, 0.15) 100%);
+  padding: 2rem;
   border-radius: 4px;
-  border-left: 5px solid var(--accent-warm);
-  margin-top: 3rem;
+  border-left: 5px solid var(--accent-peachy);
 }
 
-.process-insight h3 {
-  font-size: clamp(1.2rem, 2.3vw, 1.4rem);
-  font-weight: 700;
-  color: var(--accent-warm);
-  margin: 0 0 1rem 0;
+.partnership-guidelines {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
 }
 
-.process-insight p {
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
+.partnership-guidelines li {
+  padding: 1rem 0 1rem 2rem;
+  position: relative;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: var(--text-light);
-  line-height: 1.85;
-  margin: 0;
+  line-height: 1.8;
+  border-bottom: 1px solid rgba(201, 188, 70, 0.2);
+}
+
+.partnership-guidelines li:last-child {
+  border-bottom: none;
+}
+
+.partnership-guidelines li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-peachy);
+  font-weight: bold;
+}
+
+.closing-note {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: var(--text-light);
+  line-height: 1.8;
+  font-style: italic;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(201, 188, 70, 0.3);
 }
 
 @media (max-width: 768px) {
-  .process-steps {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .partnership-section {
+    padding: 1.5rem;
   }
 
-  .process-step,
-  .process-insight {
-    padding: 1.5rem;
+  .partnership-guidelines li {
+    padding: 0.8rem 0 0.8rem 1.5rem;
   }
 }
