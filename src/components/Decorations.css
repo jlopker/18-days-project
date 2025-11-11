@@ -1,0 +1,75 @@
+.scribble {
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.paper-scrap {
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.circle-decoration {
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.03));
+}
+
+.dot-decoration {
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+.leaf-decoration {
+  animation: sway 3.5s ease-in-out infinite;
+}
+
+.star-decoration {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.swoosh {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+.underline {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.decoration-element {
+  position: relative;
+  display: inline-block;
+}

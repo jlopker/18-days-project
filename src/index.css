@@ -1,13 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Sohne:wght@400;500;600;700&family=Editorialold:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f7f5f0;
+  --tertiary-bg: #f0ebe4;
+  --quaternary-bg: #ebe5dd;
+  --text-dark: #2B3239;
+  --text-light: #666666;
+  --accent-color: #C85364;
+  --accent-dark: #2B3239;
+  --accent-light: #ECD3F5;
+  --accent-warm: #988495;
+  --accent-coral: #C85364;
+  --accent-peachy: #C9BC46;
+  --border-color: #ddd4cc;
+  --cream: #fefaf5;
+
+  /* Fonts */
+  --font-heading: 'Lora', 'Editorialold', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-accent: 'Sohne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Grid - Scrappy Literary style */
+  --mobile-gutter: 6vw;
+  --tablet-gutter: 5vw;
+  --desktop-gutter: 4vw;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.8px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Courier New', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.decoration {
+  animation: float 3s ease-in-out infinite;
 }

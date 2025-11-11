@@ -1,24 +1,69 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Welcome from './components/Welcome';
+import CurrentEdition from './components/CurrentEdition';
+import AnnouncementBar from './components/AnnouncementBar';
+import WhoIsThis from './components/WhoIsThis';
+import Philosophy from './components/Philosophy';
+import Background from './components/Background';
+import Testimonial from './components/Testimonial';
+import Contact from './components/Contact';
+import FAQ from './components/FAQ';
+import Footer from './components/Footer';
+import WritingProcess from './components/WritingProcess';
+import Resources from './components/Resources';
+import PastEditions from './components/PastEditions';
+
+function HomePage({ isModalOpen, setIsModalOpen }) {
+  return (
+    <>
+      <Hero onOpenModal={() => setIsModalOpen(true)} />
+      <main>
+        <Welcome />
+        <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <WhoIsThis />
+        <Philosophy />
+        <Background />
+        <Testimonial />
+        <Contact />
+        <FAQ />
+      </main>
+    </>
+  );
+}
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <AnnouncementBar onOpenModal={() => setIsModalOpen(true)} />
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
+          <Route path="/writing-process" element={
+            <main>
+              <WritingProcess />
+            </main>
+          } />
+          <Route path="/resources" element={
+            <main>
+              <Resources />
+            </main>
+          } />
+          <Route path="/past-editions" element={
+            <main>
+              <PastEditions />
+            </main>
+          } />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

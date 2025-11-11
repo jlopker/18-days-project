@@ -1,0 +1,45 @@
+.background-section {
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, rgba(184, 149, 106, 0.1) 100%);
+}
+
+.intro-text {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--text-light);
+  text-align: left;
+  max-width: 100%;
+  margin: 0 0 3rem 0;
+  line-height: 1.85;
+}
+
+.background-details {
+  display: none;
+}
+
+.background-mission {
+  max-width: 100%;
+  margin: 0;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+.background-mission h3 {
+  display: none;
+}
+
+.background-mission p {
+  color: var(--text-light);
+  line-height: 1.85;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  margin: 0 0 2rem 0;
+}
+
+.background-mission p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .background-mission p {
+    font-size: 1rem;
+  }
+}
