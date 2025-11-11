@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import WritingProcess from './components/WritingProcess';
 import Resources from './components/Resources';
 import PastEditions from './components/PastEditions';
+import Admin from './components/Admin';
 
 function HomePage({ isModalOpen, setIsModalOpen }) {
   return (
@@ -58,6 +59,7 @@ function App() {
               <PastEditions />
             </main>
           } />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </div>
