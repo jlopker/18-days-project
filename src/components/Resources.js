@@ -47,7 +47,11 @@ function Resources() {
     },
     {
       name: 'Beth Pickens',
-      description: 'Offers "Homework Club" and "Parakeet," a year-long book-writing program'
+      description: 'Offers "Homework Club" and "Parakeet," a year-long book-writing program',
+      sublinks: [
+        { name: 'Homework Club', url: 'https://www.bethpickens.com/homework-club' },
+        { name: 'Parakeet', url: 'https://www.bethpickens.com/parakeet' }
+      ]
     }
   ];
 
@@ -76,6 +80,15 @@ function Resources() {
                 <div key={index} className="course-item">
                   <h4>{course.url ? <a href={course.url} target="_blank" rel="noopener noreferrer">{course.name}</a> : course.name}</h4>
                   <p>{course.description}</p>
+                  {course.sublinks && (
+                    <div className="course-sublinks">
+                      {course.sublinks.map((sublink, subIndex) => (
+                        <a key={subIndex} href={sublink.url} target="_blank" rel="noopener noreferrer" className="sublink">
+                          {sublink.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

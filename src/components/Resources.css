@@ -101,6 +101,36 @@
   margin-bottom: 0;
 }
 
+.course-sublinks {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(201, 188, 70, 0.3);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sublink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(201, 188, 70, 0.15) 0%, rgba(236, 211, 245, 0.1) 100%);
+  color: var(--accent-color);
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid var(--accent-peachy);
+}
+
+.sublink:hover {
+  background: linear-gradient(135deg, rgba(201, 188, 70, 0.25) 0%, rgba(236, 211, 245, 0.2) 100%);
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
 @media (max-width: 768px) {
   .books-list {
     grid-template-columns: 1fr;
