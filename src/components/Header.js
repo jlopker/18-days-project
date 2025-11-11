@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const handleScrollToSection = (id) => {
     closeMobileMenu();
+
+    // If not on home page, navigate to home page first
+    if (location.pathname !== '/') {
+      window.location.href = '/#' + id;
+      return;
+    }
+
+    // If already on home page, scroll to section
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
