@@ -24,7 +24,7 @@ function CurrentEdition({ isOpen, onClose }) {
               The 18 Days Project brings writers together for an 18-day virtual writing adventure. Whether you're looking to overcome writer's block, find community, or simply dedicate time to your writing, we're here to support you.
             </p>
             <p className="substack-note">
-              <strong>Want to stay in the loop for future editions?</strong> Sign up for our mailing list <a href="https://substack.com" target="_blank" rel="noopener noreferrer">here</a>.
+              <strong>Want to stay in the loop for future editions?</strong> Sign up for our mailing list <a href="https://the18somethingsproject.substack.com/" target="_blank" rel="noopener noreferrer">here</a>.
             </p>
           </div>
         </div>
