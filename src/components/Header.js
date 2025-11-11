@@ -43,7 +43,7 @@ function Header() {
               <Link to="/past-editions" className="dropdown-link" onClick={closeMobileMenu}>Past Editions</Link>
             </div>
           </div>
-          <Link to="/#about" className="nav-link" onClick={closeMobileMenu}>About</Link>
+          <button className="nav-link" onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>FAQs</button>
           <button className="nav-link" onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>Contact</button>
         </nav>
       </div>
