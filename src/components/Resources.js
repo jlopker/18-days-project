@@ -22,27 +22,27 @@ function Resources() {
   const courses = [
     {
       name: 'The Writer\'s Grotto',
-      url: 'writersgrotto.org',
+      url: 'https://www.writersgrotto.org',
       description: 'Offers classes'
     },
     {
       name: 'Laura Davis',
-      url: 'lauradavis.net',
+      url: 'https://www.lauradavis.net',
       description: 'Online classes and retreats focused on self-expression'
     },
     {
       name: 'Left Margin Lit',
-      url: 'leftmarginlit.org',
+      url: 'https://www.leftmarginlit.org',
       description: 'Berkeley co-working space with in-person and virtual classes'
     },
     {
       name: 'Lit Camp',
-      url: 'litcampwriters.org',
+      url: 'https://www.litcampwriters.org',
       description: 'Primarily online classes'
     },
     {
       name: 'Page Street',
-      url: 'pagestreet.org',
+      url: 'https://www.pagestreet.org',
       description: 'Co-working spaces in San Francisco and Berkeley with membership tiers'
     },
     {
@@ -74,9 +74,8 @@ function Resources() {
             <div className="courses-list">
               {courses.map((course, index) => (
                 <div key={index} className="course-item">
-                  <h4>{course.name}</h4>
+                  <h4>{course.url ? <a href={course.url} target="_blank" rel="noopener noreferrer">{course.name}</a> : course.name}</h4>
                   <p>{course.description}</p>
-                  {course.url && <p className="course-url">{course.url}</p>}
                 </div>
               ))}
             </div>

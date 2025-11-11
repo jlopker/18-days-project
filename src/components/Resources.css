@@ -75,8 +75,19 @@
 .course-item h4 {
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   font-weight: 700;
-  color: var(--accent-color);
   margin: 0 0 0.75rem 0;
+}
+
+.course-item h4 a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.course-item h4 a:hover {
+  color: var(--accent-warm);
+  border-bottom-color: var(--accent-warm);
 }
 
 .course-item p {
@@ -88,12 +99,6 @@
 
 .course-item p:last-child {
   margin-bottom: 0;
-}
-
-.course-url {
-  font-weight: 600;
-  color: var(--accent-color);
-  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
 }
 
 @media (max-width: 768px) {
