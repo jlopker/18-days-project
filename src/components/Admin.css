@@ -158,6 +158,28 @@
   border-top: 1px solid rgba(201, 188, 70, 0.2);
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.save-site-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-warm) 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-site-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 83, 100, 0.3);
+}
+
+.save-site-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .reset-btn {
@@ -174,6 +196,37 @@
 .reset-btn:hover {
   background: #ccc;
   transform: translateY(-2px);
+}
+
+.admin-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+.admin-message.success {
+  background: rgba(18, 158, 119, 0.1);
+  color: #129E77;
+  border-left: 4px solid #129E77;
+}
+
+.admin-message.error {
+  background: rgba(200, 83, 100, 0.1);
+  color: #C85364;
+  border-left: 4px solid #C85364;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .admin-info {

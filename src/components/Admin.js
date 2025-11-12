@@ -5,6 +5,8 @@ function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState('');
   const [editableContent, setEditableContent] = useState({
     heroTitle: 'The 18 Days Project is a writing adventure to unleash your creativity',
     heroSubtitle: 'Generate new work. Get creative support. Make inspired progress.',
@@ -49,6 +51,35 @@ function Admin() {
     const updatedContent = { ...editableContent, [field]: value };
     setEditableContent(updatedContent);
     localStorage.setItem('18daysAdminContent', JSON.stringify(updatedContent));
+  };
+
+  const handleSaveToSite = async () => {
+    setIsSaving(true);
+    setSaveMessage('');
+
+    try {
+      const response = await fetch('/api/admin/save-content', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${password}`
+        },
+        body: JSON.stringify(editableContent)
+      });
+
+      if (response.ok) {
+        setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
+        setTimeout(() => setSaveMessage(''), 4000);
+      } else if (response.status === 401) {
+        setSaveMessage('✗ Unauthorized. Invalid password.');
+      } else {
+        setSaveMessage('✗ Error saving changes. Please try again.');
+      }
+    } catch (error) {
+      setSaveMessage('✗ Unable to connect to server. Make sure the backend is running.');
+    }
+
+    setIsSaving(false);
   };
 
   const handleReset = () => {
@@ -155,11 +186,20 @@ function Admin() {
           </div>
 
           <div className="admin-actions">
+            <button onClick={handleSaveToSite} className="save-site-btn" disabled={isSaving}>
+              {isSaving ? 'Saving...' : 'Save Changes to Live Site'}
+            </button>
             <button onClick={handleReset} className="reset-btn">Reset to Default</button>
           </div>
 
+          {saveMessage && (
+            <div className={`admin-message ${saveMessage.includes('✓') ? 'success' : 'error'}`}>
+              {saveMessage}
+            </div>
+          )}
+
           <div className="admin-info">
-            <p><strong>Note:</strong> Changes are automatically saved to your browser. They will only appear on your local copy. To deploy changes to the live site, contact the development team.</p>
+            <p><strong>Note:</strong> Changes are automatically saved to your browser as you type. Click "Save Changes to Live Site" to deploy them to the actual website. Changes will require a page refresh to appear.</p>
           </div>
         </div>
       </div>
