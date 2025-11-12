@@ -101,14 +101,28 @@ async function saveContent(content) {
       return true; // Return success to indicate client-side storage worked
     }
 
-    console.log('Attempting to save to Firestore collection...');
+    console.log('Database initialized, attempting to save to Firestore...');
+    console.log('Collection: site_config, Document: content');
+    console.log('Content keys:', Object.keys(content));
+
     await db.collection('site_config').doc('content').set(content, { merge: true });
-    console.log('Content saved successfully to Firestore');
+    console.log('✓ Content saved successfully to Firestore');
     return true;
   } catch (error) {
-    console.error('Error saving content to Firestore:', error.message);
-    console.error('Error stack:', error.stack);
+    console.error('✗ Error saving content to Firestore:', error.message);
+    console.error('Error code:', error.code);
+    console.error('Error details:', error.details);
+
+    // Check if it's a NOT_FOUND error
+    if (error.code === 5 || error.message.includes('NOT_FOUND')) {
+      console.error('Database not found. Try:');
+      console.error('1. Check Firebase Console that Firestore database exists');
+      console.error('2. Verify FIREBASE_DATABASE_URL is correct');
+      console.error('3. Make sure Firestore API is enabled');
+    }
+
     // Don't throw - allow graceful fallback to localStorage
+    console.log('Falling back to localStorage. Changes saved locally.');
     return true;
   }
 }
