@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Testimonial.css';
 import { Scribble, Circle, Dot, Star, Leaf, Swoosh, PaperScrap, Underline } from './Decorations';
 
 function Testimonial() {
+  const testimonials = [
+    {
+      quote: "I'm confident that I am more powerful than my inner critic. Just give me a prompt and a few paragraphs of warmup to get over the hump, and writing WILL happen, 100% of the time. That's pretty fucking exciting!",
+      author: "Peter Rubin",
+      bgColor: "#ECD3F5"
+    },
+    {
+      quote: "Writing is such a solitary, lonely pursuit most of the time, so projects like this that build intentional and thoughtful communities are vital to all of our spiritual health.",
+      author: "Jessica Dickinson Goodman",
+      bgColor: "#C9D8E8"
+    },
+    {
+      quote: "I underestimated how confidence-building the positive-only feedback would be. I don't get to write much, and that aspect really encouraged me to stretch the bounds of what I was comfortable doing.",
+      author: "Ethan Carlson",
+      bgColor: "#D4E8D4"
+    },
+    {
+      quote: "It was great to be held accountable to the program and my partner. This was an excellent crash-course on making writing a habit.",
+      author: "Sara Olson",
+      bgColor: "#F5E5D4"
+    }
+  ];
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const scroll = (direction) => {
+    const container = document.querySelector('.testimonials-scroll-container');
+    if (container) {
+      const scrollAmount = 400;
+      const newPosition = direction === 'left' ? scrollPosition - scrollAmount : scrollPosition + scrollAmount;
+      container.scrollTo({ left: newPosition, behavior: 'smooth' });
+      setScrollPosition(newPosition);
+    }
+  };
+
   return (
     <section className="section testimonial-section">
       {/* Decorative elements */}
@@ -41,11 +76,33 @@ function Testimonial() {
       </div>
 
       <div className="testimonial-container">
-        <div className="testimonial-card">
-          <p className="testimonial-quote">
-            I started my first original novel as part of an 18 Somethings edition, typing my responses to the prompts while camping on the edge of the crater of Crater Lake. The novel, which became <em>Crater Lake Caravan</em>, touches on many of the themes the project brought out for me. I've had the pleasure of making friends and helping others make friends through 18 Somethings. Writing is such a solitary, lonely pursuit most of the time, so projects like this was build intentional and thoughtful communities are vital to all of our spiritual health.
-          </p>
-          <p className="testimonial-author">—Jessica Dickinson Goodman</p>
+        <div className="testimonials-carousel-wrapper">
+          <button
+            className="carousel-arrow left-arrow"
+            onClick={() => scroll('left')}
+            aria-label="Scroll testimonials left"
+          >
+            ←
+          </button>
+
+          <div className="testimonials-scroll-container">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="testimonial-card" style={{ backgroundColor: testimonial.bgColor }}>
+                <p className="testimonial-quote">
+                  "{testimonial.quote}"
+                </p>
+                <p className="testimonial-author">—{testimonial.author}</p>
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="carousel-arrow right-arrow"
+            onClick={() => scroll('right')}
+            aria-label="Scroll testimonials right"
+          >
+            →
+          </button>
         </div>
       </div>
     </section>
