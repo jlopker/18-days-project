@@ -130,8 +130,14 @@ async function getContent() {
 
     if (doc.exists) {
       const data = doc.data();
-      console.log('getContent: Found document in Firestore:', data);
-      return data;
+      console.log('getContent: Found document in Firestore:', Object.keys(data));
+      console.log('getContent: Has faqs:', !!data.faqs);
+      // Merge with defaults to ensure all fields are present
+      const mergedData = {
+        ...DEFAULT_CONTENT,
+        ...data
+      };
+      return mergedData;
     }
 
     console.log('getContent: No document found in Firestore, returning defaults');

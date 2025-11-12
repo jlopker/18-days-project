@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { ContentProvider } from './context/ContentContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -17,6 +19,10 @@ import WritingProcess from './components/WritingProcess';
 import Resources from './components/Resources';
 import PastEditions from './components/PastEditions';
 import Admin from './components/Admin';
+import Checkout from './components/Checkout';
+import PaymentSuccess from './components/PaymentSuccess';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function HomePage({ isModalOpen, setIsModalOpen }) {
   return (
@@ -62,6 +68,12 @@ function App() {
               </main>
             } />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/checkout" element={
+              <Elements stripe={stripePromise}>
+                <Checkout />
+              </Elements>
+            } />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
           </Routes>
           <Footer />
         </div>

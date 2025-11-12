@@ -61,6 +61,10 @@ module.exports = async function handler(req, res) {
         updatedAt: new Date().toISOString()
       };
 
+      console.log('Content to be saved:', {
+        ...content,
+        faqs: content.faqs.length > 0 ? `${content.faqs.length} items` : 'empty'
+      });
       console.log('Calling saveContent...');
       await saveContent(content);
       console.log('Content saved successfully');

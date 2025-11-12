@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CurrentEdition.css';
 
 function CurrentEdition({ isOpen, onClose }) {
@@ -16,9 +17,9 @@ function CurrentEdition({ isOpen, onClose }) {
           <div className="edition-details">
             <p className="edition-description">
               We will be running the <strong>Cocoon Edition</strong> starting <strong>Monday, December 1, 2025</strong>.{' '}
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-5tHCxkWQy1DagvYUqOBuvnqUlIq_UhPdj7z5hxJiSAe1HA/viewform" target="_blank" rel="noopener noreferrer" className="signup-link">
+              <Link to="/checkout" className="signup-link" onClick={onClose}>
                 Sign up here
-              </a>
+              </Link>
             </p>
             <p className="edition-description">
               The 18 Days Project brings writers together for an 18-day virtual writing adventure. Whether you're looking to overcome writer's block, find community, or simply dedicate time to your writing, we're here to support you.

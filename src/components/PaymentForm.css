@@ -1,0 +1,27 @@
+.payment-form {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.payment-form .StripeElement {
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.payment-form .StripeElement--focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(200, 83, 100, 0.1);
+}
+
+.payment-error {
+  background: rgba(220, 53, 69, 0.1);
+  border-left: 4px solid #dc3545;
+  color: #dc3545;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
