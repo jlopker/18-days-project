@@ -7,22 +7,22 @@ function Testimonial() {
     {
       quote: "I'm confident that I am more powerful than my inner critic. Just give me a prompt and a few paragraphs of warmup to get over the hump, and writing WILL happen, 100% of the time. That's pretty fucking exciting!",
       author: "Peter Rubin",
-      bgColor: "#ECD3F5"
+      bgColor: "#D4A5E6"
     },
     {
       quote: "Writing is such a solitary, lonely pursuit most of the time, so projects like this that build intentional and thoughtful communities are vital to all of our spiritual health.",
       author: "Jessica Dickinson Goodman",
-      bgColor: "#C9D8E8"
+      bgColor: "#9CBDE6"
     },
     {
       quote: "I underestimated how confidence-building the positive-only feedback would be. I don't get to write much, and that aspect really encouraged me to stretch the bounds of what I was comfortable doing.",
       author: "Ethan Carlson",
-      bgColor: "#D4E8D4"
+      bgColor: "#A8D4A8"
     },
     {
       quote: "It was great to be held accountable to the program and my partner. This was an excellent crash-course on making writing a habit.",
       author: "Sara Olson",
-      bgColor: "#F5E5D4"
+      bgColor: "#E6C4A8"
     }
   ];
 
