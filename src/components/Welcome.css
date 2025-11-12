@@ -3,7 +3,7 @@
 }
 
 .section {
-  padding: 8vw var(--desktop-gutter);
+  padding: 6vw var(--desktop-gutter);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -38,7 +38,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 6vw var(--mobile-gutter);
+    padding: 5vw var(--mobile-gutter);
   }
 
   .section-title {
