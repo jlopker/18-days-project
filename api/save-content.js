@@ -21,16 +21,30 @@ export default async function handler(req, res) {
 
   // Handle POST requests - save content
   if (req.method === 'POST') {
+    console.log('POST request received');
+
     // Verify admin authentication
     const token = req.headers.authorization?.split(' ')[1];
+    console.log('Auth token provided:', !!token);
+
     if (token !== '18days') {
+      console.log('Unauthorized: token mismatch');
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
     try {
       const { heroTitle, heroSubtitle, heroButtonText, announcementText, announcementButtonText } = req.body;
 
+      console.log('Received fields:', {
+        heroTitle: !!heroTitle,
+        heroSubtitle: !!heroSubtitle,
+        heroButtonText: !!heroButtonText,
+        announcementText: !!announcementText,
+        announcementButtonText: !!announcementButtonText
+      });
+
       if (!heroTitle || !heroSubtitle || !heroButtonText || !announcementText || !announcementButtonText) {
+        console.log('Missing required fields');
         return res.status(400).json({ error: 'Missing required fields' });
       }
 
@@ -43,7 +57,9 @@ export default async function handler(req, res) {
         updatedAt: new Date().toISOString()
       };
 
+      console.log('Calling saveContent...');
       await saveContent(content);
+      console.log('Content saved successfully');
 
       return res.status(200).json({
         success: true,
@@ -51,7 +67,8 @@ export default async function handler(req, res) {
         data: content
       });
     } catch (error) {
-      console.error('Error saving content:', error);
+      console.error('Error in POST handler:', error.message);
+      console.error('Stack trace:', error.stack);
       return res.status(500).json({
         error: 'Failed to save content',
         details: error.message,

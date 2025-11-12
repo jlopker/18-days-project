@@ -8,14 +8,27 @@ function initializeFirebase() {
   if (isInitialized) return;
 
   try {
+    console.log('Initializing Firebase Admin SDK...');
+    console.log('Has existing apps:', admin.apps.length > 0);
+    console.log('Has FIREBASE_SERVICE_ACCOUNT_KEY:', !!process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+    console.log('Has FIREBASE_DATABASE_URL:', !!process.env.FIREBASE_DATABASE_URL);
+
     if (!admin.apps.length) {
       // Use environment variables for Firebase configuration
-      const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
-        ? JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString())
-        : null;
+      const serviceAccountKeyEnv = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
 
-      if (!serviceAccountKey) {
+      if (!serviceAccountKeyEnv) {
         console.warn('Firebase service account key not configured. Using fallback mode.');
+        isInitialized = true;
+        return;
+      }
+
+      let serviceAccountKey;
+      try {
+        serviceAccountKey = JSON.parse(Buffer.from(serviceAccountKeyEnv, 'base64').toString());
+        console.log('Successfully parsed Firebase service account key');
+      } catch (parseError) {
+        console.error('Failed to parse Firebase service account key:', parseError.message);
         isInitialized = true;
         return;
       }
@@ -24,12 +37,14 @@ function initializeFirebase() {
         credential: admin.credential.cert(serviceAccountKey),
         databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://18-days-project.firebaseio.com'
       });
+      console.log('Firebase Admin SDK initialized successfully');
     }
 
     db = admin.firestore();
+    console.log('Firestore database reference created');
     isInitialized = true;
   } catch (error) {
-    console.error('Failed to initialize Firebase:', error);
+    console.error('Failed to initialize Firebase:', error.message, error.stack);
     isInitialized = true;
   }
 }
@@ -67,16 +82,21 @@ async function getContent() {
 // Save content to Firestore
 async function saveContent(content) {
   try {
+    console.log('saveContent called with:', Object.keys(content));
     initializeFirebase();
 
     if (!db) {
-      throw new Error('Firebase not initialized and no fallback storage available');
+      console.error('Firestore database not initialized');
+      throw new Error('Firebase not initialized - set FIREBASE_SERVICE_ACCOUNT_KEY environment variable');
     }
 
+    console.log('Attempting to save to Firestore collection...');
     await db.collection('site_config').doc('content').set(content, { merge: true });
+    console.log('Content saved successfully to Firestore');
     return true;
   } catch (error) {
-    console.error('Error saving content to Firestore:', error);
+    console.error('Error saving content to Firestore:', error.message);
+    console.error('Error stack:', error.stack);
     throw error;
   }
 }
