@@ -142,8 +142,22 @@
 }
 
 @media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .modal-close {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .modal-title {
+    margin: 0 0 1rem 0;
+  }
+
   .edition-description {
     font-size: 1rem;
+    margin: 0 0 1rem 0;
   }
 
   .substack-note {
