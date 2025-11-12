@@ -243,6 +243,29 @@
   line-height: 1.6;
 }
 
+.faq-items-editor {
+  background: rgba(236, 211, 245, 0.05);
+  padding: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(201, 188, 70, 0.1);
+}
+
+.faq-item-editor {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(201, 188, 70, 0.1);
+}
+
+.faq-item-editor:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-item-editor .admin-field:first-child {
+  margin-top: 0;
+}
+
 @media (max-width: 768px) {
   .admin-section {
     padding: 1rem var(--mobile-gutter);
