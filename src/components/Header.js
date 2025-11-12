@@ -4,9 +4,14 @@ import './Header.css';
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const location = useLocation();
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileDropdownOpen(false);
+  };
+  const toggleMobileDropdown = () => setMobileDropdownOpen(!mobileDropdownOpen);
 
   const handleScrollToSection = (id) => {
     closeMobileMenu();
@@ -47,8 +52,8 @@ function Header() {
           <Link to="/writing-process" className="nav-link" onClick={closeMobileMenu}>Writing Process</Link>
           <button className="nav-link" onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>FAQs</button>
           <button className="nav-link" onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>Contact</button>
-          <div className="nav-dropdown">
-            <button className="nav-link dropdown-toggle">Learn More</button>
+          <div className={`nav-dropdown ${mobileDropdownOpen ? 'open' : ''}`}>
+            <button className="nav-link dropdown-toggle" onClick={toggleMobileDropdown}>Learn More</button>
             <div className="dropdown-menu">
               <Link to="/resources" className="dropdown-link" onClick={closeMobileMenu}>Resources</Link>
               <Link to="/past-editions" className="dropdown-link" onClick={closeMobileMenu}>Past Editions</Link>

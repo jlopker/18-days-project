@@ -214,20 +214,74 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    z-index: 999;
   }
 
   .navigation.open {
-    max-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
   }
 
   .nav-link {
     padding: 1rem var(--mobile-gutter);
     border-bottom: 1px solid var(--border-color);
     width: 100%;
+    text-align: left;
   }
 
   .nav-link::after {
     display: none;
+  }
+
+  .nav-dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    display: block !important;
+    width: 100%;
+    text-align: left;
+    padding: 1rem var(--mobile-gutter);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transform: none;
+    border: none;
+    background-color: rgba(201, 188, 70, 0.1);
+    box-shadow: none;
+    margin-top: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px;
+  }
+
+  .dropdown-link {
+    padding: 0.75rem var(--mobile-gutter) 0.75rem calc(var(--mobile-gutter) + 1.5rem);
+    border: none;
+    background: none;
+  }
+
+  .dropdown-link:hover {
+    background-color: rgba(201, 188, 70, 0.2);
+  }
+
+  .dropdown-link:first-child {
+    border-radius: 0;
+  }
+
+  .dropdown-link:last-child {
+    border-radius: 0;
   }
 
   .logo-section h1 {
