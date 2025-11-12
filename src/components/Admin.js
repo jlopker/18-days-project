@@ -100,6 +100,14 @@ function Admin() {
 
       if (response.ok) {
         await response.json();
+
+        // Refresh content globally so other pages see the updates
+        if (typeof window !== 'undefined' && window.__refreshContent) {
+          console.log('Admin: Triggering global content refresh...');
+          await window.__refreshContent();
+          console.log('Admin: Content refreshed');
+        }
+
         if (isDevelopment) {
           setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
         } else {
