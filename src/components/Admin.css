@@ -248,6 +248,7 @@
   padding: 1.5rem;
   border-radius: 4px;
   border: 1px solid rgba(201, 188, 70, 0.1);
+  margin-bottom: 1rem;
 }
 
 .faq-item-editor {
@@ -262,8 +263,56 @@
   padding-bottom: 0;
 }
 
+.faq-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.faq-item-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--accent-color);
+}
+
 .faq-item-editor .admin-field:first-child {
   margin-top: 0;
+}
+
+.remove-faq-btn {
+  background: rgba(200, 83, 100, 0.1);
+  border: 1px solid rgba(200, 83, 100, 0.3);
+  color: #C85364;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.remove-faq-btn:hover {
+  background: rgba(200, 83, 100, 0.2);
+  border-color: #C85364;
+}
+
+.add-faq-btn {
+  background: rgba(18, 158, 119, 0.1);
+  border: 2px dashed #129E77;
+  color: #129E77;
+  padding: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.add-faq-btn:hover {
+  background: rgba(18, 158, 119, 0.2);
+  border-color: #129E77;
 }
 
 @media (max-width: 768px) {
