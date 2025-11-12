@@ -33,14 +33,16 @@ module.exports = async function handler(req, res) {
     }
 
     try {
-      const { heroTitle, heroSubtitle, heroButtonText, announcementText, announcementButtonText } = req.body;
+      const { heroTitle, heroSubtitle, heroButtonText, announcementText, announcementButtonText, faqTitle, faqs } = req.body;
 
       console.log('Received fields:', {
         heroTitle: !!heroTitle,
         heroSubtitle: !!heroSubtitle,
         heroButtonText: !!heroButtonText,
         announcementText: !!announcementText,
-        announcementButtonText: !!announcementButtonText
+        announcementButtonText: !!announcementButtonText,
+        faqTitle: !!faqTitle,
+        faqs: Array.isArray(faqs) ? faqs.length : 'not an array'
       });
 
       if (!heroTitle || !heroSubtitle || !heroButtonText || !announcementText || !announcementButtonText) {
@@ -54,6 +56,8 @@ module.exports = async function handler(req, res) {
         heroButtonText,
         announcementText,
         announcementButtonText,
+        faqTitle: faqTitle || 'Frequently Asked Questions',
+        faqs: Array.isArray(faqs) ? faqs : [],
         updatedAt: new Date().toISOString()
       };
 
@@ -74,7 +78,7 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         success: true,
         message: 'Changes saved to browser storage. To persist changes permanently, configure Firebase.',
-        data: content,
+        data: req.body,
         warning: 'FIREBASE_SERVICE_ACCOUNT_KEY environment variable not set'
       });
     }

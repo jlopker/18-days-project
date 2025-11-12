@@ -6,7 +6,8 @@ function FAQ() {
   const { content } = useContext(ContentContext);
   const [openIndex, setOpenIndex] = useState(null);
 
-  const faqs = content.faqs || [];
+  const faqs = content?.faqs || [];
+  const faqTitle = content?.faqTitle || 'Frequently Asked Questions';
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -15,7 +16,7 @@ function FAQ() {
   return (
     <section id="faq" className="section faq-section">
       <div className="section-container">
-        <h2 className="section-title">{content.faqTitle}</h2>
+        <h2 className="section-title">{faqTitle}</h2>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div key={index} className={`faq-item ${openIndex === index ? 'open' : ''}`}>
