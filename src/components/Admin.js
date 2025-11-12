@@ -58,7 +58,8 @@ function Admin() {
     setSaveMessage('');
 
     try {
-      const response = await fetch('/api/admin/save-content', {
+      // Try to connect to backend server on port 3001
+      const response = await fetch('http://localhost:3001/api/admin/save-content', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ function Admin() {
         setSaveMessage('✗ Error saving changes. Please try again.');
       }
     } catch (error) {
-      setSaveMessage('✗ Unable to connect to server. Make sure the backend is running.');
+      setSaveMessage('✗ Backend server not running. Please run "node server.js" in another terminal on port 3001.');
     }
 
     setIsSaving(false);
