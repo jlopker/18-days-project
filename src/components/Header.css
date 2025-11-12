@@ -243,7 +243,12 @@
     width: 100%;
     text-align: left;
     padding: 1rem var(--mobile-gutter);
-    border-bottom: 1px solid var(--border-color);
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    background: none !important;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
   }
 
   .dropdown-menu {
