@@ -30,8 +30,11 @@ function Testimonial() {
 
   const scroll = (direction) => {
     const container = document.querySelector('.testimonials-scroll-container');
-    if (container) {
-      const scrollAmount = 400;
+    const card = document.querySelector('.testimonial-card');
+    if (container && card) {
+      const cardWidth = card.offsetWidth;
+      const gap = 16; // 2rem = 32px, but gap is between cards so we need to account for it
+      const scrollAmount = cardWidth + gap;
       const newPosition = direction === 'left' ? scrollPosition - scrollAmount : scrollPosition + scrollAmount;
       container.scrollTo({ left: newPosition, behavior: 'smooth' });
       setScrollPosition(newPosition);
