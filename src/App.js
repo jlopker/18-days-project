@@ -23,7 +23,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
       <Hero onOpenModal={() => setIsModalOpen(true)} />
       <main>
         <Welcome />
-        <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <WhoIsThis />
         <Background />
         <Testimonial />
@@ -42,6 +41,7 @@ function App() {
       <div className="App">
         <AnnouncementBar onOpenModal={() => setIsModalOpen(true)} />
         <Header />
+        <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <Routes>
           <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
           <Route path="/writing-process" element={
