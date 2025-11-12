@@ -37,22 +37,16 @@ function initializeFirebase() {
         return;
       }
 
-      const databaseURL = process.env.FIREBASE_DATABASE_URL;
-      console.log('Initializing Firebase with databaseURL:', databaseURL);
-
-      // Note: databaseURL is for Realtime Database, not Firestore
       // Firestore uses the project_id from the service account key
-      const initConfig = {
+      // We don't need databaseURL for Firestore
+      console.log('Initializing Firebase Admin SDK with credential only (Firestore)');
+
+      admin.initializeApp({
         credential: admin.credential.cert(serviceAccountKey)
-      };
+      });
 
-      // Only add databaseURL if it's set (for Realtime Database)
-      if (databaseURL) {
-        initConfig.databaseURL = databaseURL;
-      }
-
-      admin.initializeApp(initConfig);
-      console.log('Firebase Admin SDK initialized successfully');
+      console.log('✓ Firebase Admin SDK initialized successfully');
+      console.log('Project ID:', serviceAccountKey.project_id);
     }
 
     db = admin.firestore();
