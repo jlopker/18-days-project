@@ -33,9 +33,20 @@ function Testimonial() {
     const card = document.querySelector('.testimonial-card');
     if (container && card) {
       const cardWidth = card.offsetWidth;
-      const gap = 16; // 2rem = 32px, but gap is between cards so we need to account for it
+      const gap = 16;
       const scrollAmount = cardWidth + gap;
-      const newPosition = direction === 'left' ? scrollPosition - scrollAmount : scrollPosition + scrollAmount;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      let newPosition = direction === 'left' ? scrollPosition - scrollAmount : scrollPosition + scrollAmount;
+
+      // Loop back to start if we've gone past the end
+      if (newPosition > maxScroll) {
+        newPosition = 0;
+      } else if (newPosition < 0) {
+        // Loop to end if we've gone before the start
+        newPosition = maxScroll;
+      }
+
       container.scrollTo({ left: newPosition, behavior: 'smooth' });
       setScrollPosition(newPosition);
     }
