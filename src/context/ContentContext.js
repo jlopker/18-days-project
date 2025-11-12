@@ -22,15 +22,26 @@ export function ContentProvider({ children }) {
           ? 'http://localhost:3001/api/admin/get-content'
           : '/api/save-content';
 
+        console.log('ContentContext: Loading content from', apiUrl);
         const response = await fetch(apiUrl);
+
         if (response.ok) {
           const result = await response.json();
+          console.log('ContentContext: Got response', result);
           if (result.data) {
+            console.log('ContentContext: Setting content from API', result.data);
             setContent(result.data);
+          } else {
+            console.log('ContentContext: No data in response, using defaults');
+            setContent(DEFAULT_CONTENT);
           }
+        } else {
+          console.warn('ContentContext: API response not ok', response.status);
+          setContent(DEFAULT_CONTENT);
         }
       } catch (error) {
-        console.log('Failed to load content from API, using defaults');
+        console.error('ContentContext: Failed to load content from API', error);
+        console.log('ContentContext: Using default content');
         setContent(DEFAULT_CONTENT);
       } finally {
         setIsLoading(false);

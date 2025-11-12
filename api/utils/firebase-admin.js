@@ -63,20 +63,28 @@ const DEFAULT_CONTENT = {
 // Get content from Firestore
 async function getContent() {
   try {
+    console.log('getContent: Starting to initialize Firebase...');
     initializeFirebase();
 
     if (!db) {
-      console.log('Firebase not initialized, using default content');
+      console.log('getContent: Firebase database not initialized, using default content');
       return DEFAULT_CONTENT;
     }
 
+    console.log('getContent: Firebase initialized, fetching from Firestore...');
     const doc = await db.collection('site_config').doc('content').get();
+
     if (doc.exists) {
-      return doc.data();
+      const data = doc.data();
+      console.log('getContent: Found document in Firestore:', data);
+      return data;
     }
+
+    console.log('getContent: No document found in Firestore, returning defaults');
     return DEFAULT_CONTENT;
   } catch (error) {
-    console.error('Error fetching content from Firestore:', error);
+    console.error('getContent: Error fetching content from Firestore:', error.message);
+    console.error('getContent: Stack trace:', error.stack);
     return DEFAULT_CONTENT;
   }
 }
