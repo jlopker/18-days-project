@@ -99,7 +99,7 @@ function Admin() {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         if (isDevelopment) {
           setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
         } else {
