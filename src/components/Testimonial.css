@@ -10,7 +10,7 @@
 .testimonial-decoration {
   position: absolute;
   opacity: 0.8;
-  z-index: 1;
+  z-index: 0;
 }
 
 .testimonial-scribble-1 {
@@ -93,6 +93,8 @@
 .testimonial-container {
   max-width: 100%;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonials-carousel-wrapper {
