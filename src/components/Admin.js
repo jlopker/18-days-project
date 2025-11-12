@@ -58,8 +58,13 @@ function Admin() {
     setSaveMessage('');
 
     try {
-      // Try to connect to backend server on port 3001
-      const response = await fetch('http://localhost:3001/api/admin/save-content', {
+      // Determine API endpoint based on environment
+      const isDevelopment = window.location.hostname === 'localhost';
+      const apiUrl = isDevelopment
+        ? 'http://localhost:3001/api/admin/save-content'
+        : '/api/save-content';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,15 +74,25 @@ function Admin() {
       });
 
       if (response.ok) {
-        setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
-        setTimeout(() => setSaveMessage(''), 4000);
+        const data = await response.json();
+        if (isDevelopment) {
+          setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
+        } else {
+          setSaveMessage('✓ Changes saved to browser. Note: Vercel deployments have read-only filesystems. Changes are stored locally in your browser.');
+        }
+        setTimeout(() => setSaveMessage(''), 5000);
       } else if (response.status === 401) {
         setSaveMessage('✗ Unauthorized. Invalid password.');
       } else {
         setSaveMessage('✗ Error saving changes. Please try again.');
       }
     } catch (error) {
-      setSaveMessage('✗ Backend server not running. Please run "node server.js" in another terminal on port 3001.');
+      const isDevelopment = window.location.hostname === 'localhost';
+      if (isDevelopment) {
+        setSaveMessage('✗ Backend server not running. Please run "node server.js" in another terminal on port 3001.');
+      } else {
+        setSaveMessage('✗ Connection error. Changes are saved to your browser only.');
+      }
     }
 
     setIsSaving(false);
@@ -200,7 +215,12 @@ function Admin() {
           )}
 
           <div className="admin-info">
-            <p><strong>Note:</strong> Changes are automatically saved to your browser as you type. Click "Save Changes to Live Site" to deploy them to the actual website. Changes will require a page refresh to appear.</p>
+            <p><strong>Note:</strong> Changes are automatically saved to your browser as you type.</p>
+            {window.location.hostname === 'localhost' ? (
+              <p>Click "Save Changes to Live Site" to deploy them to the actual website. Changes will require a page refresh to appear. (Local development mode)</p>
+            ) : (
+              <p><em>On Vercel:</em> The "Save Changes to Live Site" button saves your changes to browser storage only. Vercel has read-only filesystems, so permanent changes would require a database backend. For now, your changes are preserved in localStorage.</p>
+            )}
           </div>
         </div>
       </div>
