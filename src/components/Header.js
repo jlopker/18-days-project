@@ -45,6 +45,8 @@ function Header() {
         <nav className={`navigation ${mobileMenuOpen ? 'open' : ''}`}>
           <Link to="/" className="nav-link" onClick={closeMobileMenu}>Welcome</Link>
           <Link to="/writing-process" className="nav-link" onClick={closeMobileMenu}>Writing Process</Link>
+          <button className="nav-link" onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>FAQs</button>
+          <button className="nav-link" onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>Contact</button>
           <div className="nav-dropdown">
             <button className="nav-link dropdown-toggle">Learn More</button>
             <div className="dropdown-menu">
@@ -52,8 +54,6 @@ function Header() {
               <Link to="/past-editions" className="dropdown-link" onClick={closeMobileMenu}>Past Editions</Link>
             </div>
           </div>
-          <button className="nav-link" onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>FAQs</button>
-          <button className="nav-link" onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}>Contact</button>
         </nav>
       </div>
     </header>
