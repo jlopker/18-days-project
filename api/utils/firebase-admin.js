@@ -12,6 +12,7 @@ function initializeFirebase() {
     console.log('Has existing apps:', admin.apps.length > 0);
     console.log('Has FIREBASE_SERVICE_ACCOUNT_KEY:', !!process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
     console.log('Has FIREBASE_DATABASE_URL:', !!process.env.FIREBASE_DATABASE_URL);
+    console.log('FIREBASE_DATABASE_URL value:', process.env.FIREBASE_DATABASE_URL);
     console.log('ENV keys available:', Object.keys(process.env).filter(k => k.includes('FIREBASE')));
 
     if (!admin.apps.length) {
@@ -29,15 +30,19 @@ function initializeFirebase() {
       try {
         serviceAccountKey = JSON.parse(Buffer.from(serviceAccountKeyEnv, 'base64').toString());
         console.log('Successfully parsed Firebase service account key');
+        console.log('Service account project_id:', serviceAccountKey.project_id);
       } catch (parseError) {
         console.error('Failed to parse Firebase service account key:', parseError.message);
         isInitialized = true;
         return;
       }
 
+      const databaseURL = process.env.FIREBASE_DATABASE_URL;
+      console.log('Initializing Firebase with databaseURL:', databaseURL);
+
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccountKey),
-        databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://18-days-project.firebaseio.com'
+        databaseURL: databaseURL
       });
       console.log('Firebase Admin SDK initialized successfully');
     }
