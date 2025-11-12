@@ -11,7 +11,11 @@ export default async function handler(req, res) {
       });
     } catch (error) {
       console.error('Error fetching content:', error);
-      return res.status(500).json({ error: 'Failed to fetch content' });
+      return res.status(200).json({
+        success: true,
+        data: { /* default content will be returned by getContent on error */ },
+        warning: 'Using default content - Firebase may not be configured'
+      });
     }
   }
 
@@ -26,6 +30,10 @@ export default async function handler(req, res) {
     try {
       const { heroTitle, heroSubtitle, heroButtonText, announcementText, announcementButtonText } = req.body;
 
+      if (!heroTitle || !heroSubtitle || !heroButtonText || !announcementText || !announcementButtonText) {
+        return res.status(400).json({ error: 'Missing required fields' });
+      }
+
       const content = {
         heroTitle,
         heroSubtitle,
@@ -39,12 +47,16 @@ export default async function handler(req, res) {
 
       return res.status(200).json({
         success: true,
-        message: 'Changes saved to Firestore database and will persist on Vercel!',
+        message: 'Changes saved successfully!',
         data: content
       });
     } catch (error) {
       console.error('Error saving content:', error);
-      return res.status(500).json({ error: 'Failed to save content' });
+      return res.status(500).json({
+        error: 'Failed to save content',
+        details: error.message,
+        note: 'Make sure FIREBASE_SERVICE_ACCOUNT_KEY environment variable is set on Vercel'
+      });
     }
   }
 

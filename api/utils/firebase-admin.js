@@ -1,25 +1,38 @@
 const admin = require('firebase-admin');
 
+let db = null;
+let isInitialized = false;
+
 // Initialize Firebase Admin SDK
-if (!admin.apps.length) {
-  // Use environment variables for Firebase configuration
-  const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
-    ? JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString())
-    : null;
+function initializeFirebase() {
+  if (isInitialized) return;
 
-  if (!serviceAccountKey) {
-    console.warn('Firebase service account key not configured. Using default emulator/development mode.');
-  }
+  try {
+    if (!admin.apps.length) {
+      // Use environment variables for Firebase configuration
+      const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
+        ? JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY, 'base64').toString())
+        : null;
 
-  if (serviceAccountKey) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccountKey),
-      databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://18-days-project.firebaseio.com'
-    });
+      if (!serviceAccountKey) {
+        console.warn('Firebase service account key not configured. Using fallback mode.');
+        isInitialized = true;
+        return;
+      }
+
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccountKey),
+        databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://18-days-project.firebaseio.com'
+      });
+    }
+
+    db = admin.firestore();
+    isInitialized = true;
+  } catch (error) {
+    console.error('Failed to initialize Firebase:', error);
+    isInitialized = true;
   }
 }
-
-const db = admin.firestore();
 
 // Default content
 const DEFAULT_CONTENT = {
@@ -33,7 +46,12 @@ const DEFAULT_CONTENT = {
 // Get content from Firestore
 async function getContent() {
   try {
-    if (!db) return DEFAULT_CONTENT;
+    initializeFirebase();
+
+    if (!db) {
+      console.log('Firebase not initialized, using default content');
+      return DEFAULT_CONTENT;
+    }
 
     const doc = await db.collection('site_config').doc('content').get();
     if (doc.exists) {
@@ -49,8 +67,10 @@ async function getContent() {
 // Save content to Firestore
 async function saveContent(content) {
   try {
+    initializeFirebase();
+
     if (!db) {
-      throw new Error('Firebase not initialized');
+      throw new Error('Firebase not initialized and no fallback storage available');
     }
 
     await db.collection('site_config').doc('content').set(content, { merge: true });

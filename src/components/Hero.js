@@ -42,8 +42,8 @@ function Hero({ onOpenModal }) {
 
       {/* Main content */}
       <div className="hero-content">
-        <h2 className="hero-title">{content.heroTitle}</h2>
-        <p className="hero-subtitle">{content.heroSubtitle}</p>
+        <h2 className="hero-title">The 18 Days Project is a writing adventure to unleash your creativity blarg</h2>
+        <p className="hero-subtitle">Generate new work. Get creative support. Make inspired progress.</p>
         <button className="hero-cta-button" onClick={onOpenModal}>
           {content.heroButtonText}
         </button>
