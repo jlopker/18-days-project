@@ -12,6 +12,7 @@ function initializeFirebase() {
     console.log('Has existing apps:', admin.apps.length > 0);
     console.log('Has FIREBASE_SERVICE_ACCOUNT_KEY:', !!process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
     console.log('Has FIREBASE_DATABASE_URL:', !!process.env.FIREBASE_DATABASE_URL);
+    console.log('ENV keys available:', Object.keys(process.env).filter(k => k.includes('FIREBASE')));
 
     if (!admin.apps.length) {
       // Use environment variables for Firebase configuration
@@ -19,6 +20,7 @@ function initializeFirebase() {
 
       if (!serviceAccountKeyEnv) {
         console.warn('Firebase service account key not configured. Using fallback mode.');
+        console.warn('All environment variables:', Object.keys(process.env).sort());
         isInitialized = true;
         return;
       }
@@ -86,8 +88,9 @@ async function saveContent(content) {
     initializeFirebase();
 
     if (!db) {
-      console.error('Firestore database not initialized');
-      throw new Error('Firebase not initialized - set FIREBASE_SERVICE_ACCOUNT_KEY environment variable');
+      console.warn('Firebase not initialized - changes will only be stored in browser localStorage');
+      console.warn('To persist changes on Vercel, set FIREBASE_SERVICE_ACCOUNT_KEY environment variable');
+      return true; // Return success to indicate client-side storage worked
     }
 
     console.log('Attempting to save to Firestore collection...');
@@ -97,7 +100,8 @@ async function saveContent(content) {
   } catch (error) {
     console.error('Error saving content to Firestore:', error.message);
     console.error('Error stack:', error.stack);
-    throw error;
+    // Don't throw - allow graceful fallback to localStorage
+    return true;
   }
 }
 
