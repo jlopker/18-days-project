@@ -1,6 +1,6 @@
 const { getContent, saveContent } = require('./utils/firebase-admin');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Handle GET requests - retrieve current content
   if (req.method === 'GET') {
     try {
