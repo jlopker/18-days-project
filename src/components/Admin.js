@@ -17,10 +17,35 @@ function Admin() {
 
   // Load saved content on mount
   useEffect(() => {
-    const savedContent = localStorage.getItem('18daysAdminContent');
-    if (savedContent) {
-      setEditableContent(JSON.parse(savedContent));
-    }
+    const loadContent = async () => {
+      // Try to load from API first (Firebase on production, file system in development)
+      try {
+        const isDevelopment = window.location.hostname === 'localhost';
+        const apiUrl = isDevelopment
+          ? 'http://localhost:3001/api/admin/get-content'
+          : '/api/save-content';
+
+        const response = await fetch(apiUrl);
+        if (response.ok) {
+          const result = await response.json();
+          if (result.data) {
+            setEditableContent(result.data);
+          }
+        }
+      } catch (error) {
+        console.log('Failed to load from API, checking localStorage...');
+      }
+
+      // Fall back to localStorage if available
+      const savedContent = localStorage.getItem('18daysAdminContent');
+      if (savedContent) {
+        setEditableContent(JSON.parse(savedContent));
+      }
+    };
+
+    loadContent();
+
+    // Load password from localStorage
     const savedPassword = localStorage.getItem('18daysAdminPassword');
     if (savedPassword) {
       setPassword(savedPassword);
@@ -78,7 +103,7 @@ function Admin() {
         if (isDevelopment) {
           setSaveMessage('✓ Changes saved to the live site! They will be visible after a page refresh.');
         } else {
-          setSaveMessage('✓ Changes saved to browser. Note: Vercel deployments have read-only filesystems. Changes are stored locally in your browser.');
+          setSaveMessage('✓ Changes saved to Firestore! They are now persistent on Vercel and will appear immediately.');
         }
         setTimeout(() => setSaveMessage(''), 5000);
       } else if (response.status === 401) {
@@ -219,7 +244,7 @@ function Admin() {
             {window.location.hostname === 'localhost' ? (
               <p>Click "Save Changes to Live Site" to deploy them to the actual website. Changes will require a page refresh to appear. (Local development mode)</p>
             ) : (
-              <p><em>On Vercel:</em> The "Save Changes to Live Site" button saves your changes to browser storage only. Vercel has read-only filesystems, so permanent changes would require a database backend. For now, your changes are preserved in localStorage.</p>
+              <p><em>On Vercel:</em> Click "Save Changes to Live Site" to persist your changes to Firestore database. Changes will be permanent and visible across all users and deployments.</p>
             )}
           </div>
         </div>

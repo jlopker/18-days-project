@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { ContentProvider } from './context/ContentContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Welcome from './components/Welcome';
@@ -37,33 +38,35 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Router>
-      <div className="App">
-        <AnnouncementBar onOpenModal={() => setIsModalOpen(true)} />
-        <Header />
-        <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        <Routes>
-          <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
-          <Route path="/writing-process" element={
-            <main>
-              <WritingProcess />
-            </main>
-          } />
-          <Route path="/resources" element={
-            <main>
-              <Resources />
-            </main>
-          } />
-          <Route path="/past-editions" element={
-            <main>
-              <PastEditions />
-            </main>
-          } />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <ContentProvider>
+      <Router>
+        <div className="App">
+          <AnnouncementBar onOpenModal={() => setIsModalOpen(true)} />
+          <Header />
+          <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <Routes>
+            <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
+            <Route path="/writing-process" element={
+              <main>
+                <WritingProcess />
+              </main>
+            } />
+            <Route path="/resources" element={
+              <main>
+                <Resources />
+              </main>
+            } />
+            <Route path="/past-editions" element={
+              <main>
+                <PastEditions />
+              </main>
+            } />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </ContentProvider>
   );
 }
 

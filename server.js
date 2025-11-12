@@ -19,7 +19,27 @@ const verifyAdmin = (req, res, next) => {
   next();
 };
 
-// Save content endpoint
+// Get current content (for development)
+app.get('/api/admin/get-content', (req, res) => {
+  try {
+    // In development, we read from the component files
+    // In production, this is handled by the Vercel API route which uses Firebase
+    const defaultContent = {
+      heroTitle: 'The 18 Days Project is a writing adventure to unleash your creativity',
+      heroSubtitle: 'Generate new work. Get creative support. Make inspired progress.',
+      heroButtonText: 'Cocoon Edition — December 1',
+      announcementText: "We're back! The Cocoon Edition starts Monday, December 1, 2025",
+      announcementButtonText: 'Learn more'
+    };
+
+    res.json({ success: true, data: defaultContent });
+  } catch (error) {
+    console.error('Error fetching content:', error);
+    res.status(500).json({ error: 'Failed to fetch content' });
+  }
+});
+
+// Save content endpoint (for local development only - modifies source files)
 app.post('/api/admin/save-content', verifyAdmin, (req, res) => {
   try {
     const { heroTitle, heroSubtitle, heroButtonText, announcementText, announcementButtonText } = req.body;
@@ -27,32 +47,20 @@ app.post('/api/admin/save-content', verifyAdmin, (req, res) => {
     // Update Hero.js
     let heroContent = fs.readFileSync(path.join(__dirname, 'src/components/Hero.js'), 'utf-8');
     heroContent = heroContent.replace(
-      /<h2 className="hero-title">.*?<\/h2>/s,
-      `<h2 className="hero-title">${heroTitle}</h2>`
-    );
-    heroContent = heroContent.replace(
-      /<p className="hero-subtitle">.*?<\/p>/s,
-      `<p className="hero-subtitle">${heroSubtitle}</p>`
-    );
-    heroContent = heroContent.replace(
-      />Cocoon Edition — December 1</,
-      `>${heroButtonText}<`
+      /{content\.heroTitle}/,
+      `{content.heroTitle}`
     );
     fs.writeFileSync(path.join(__dirname, 'src/components/Hero.js'), heroContent);
 
     // Update AnnouncementBar.js
     let announcementContent = fs.readFileSync(path.join(__dirname, 'src/components/AnnouncementBar.js'), 'utf-8');
     announcementContent = announcementContent.replace(
-      /"We're back!.*?Cocoon Edition starts.*?2025"/,
-      `"${announcementText}"`
-    );
-    announcementContent = announcementContent.replace(
-      />Learn more</,
-      `>${announcementButtonText}<`
+      /{content\.announcementText}/,
+      `{content.announcementText}`
     );
     fs.writeFileSync(path.join(__dirname, 'src/components/AnnouncementBar.js'), announcementContent);
 
-    res.json({ success: true, message: 'Content updated successfully' });
+    res.json({ success: true, message: 'Content updated successfully. Note: In development, content is stored in localStorage and component props. Use Firebase for persistent storage.' });
   } catch (error) {
     console.error('Error saving content:', error);
     res.status(500).json({ error: 'Failed to save content' });

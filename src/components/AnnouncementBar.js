@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './AnnouncementBar.css';
+import { ContentContext } from '../context/ContentContext';
 
 function AnnouncementBar({ onOpenModal }) {
   const [isVisible, setIsVisible] = useState(true);
+  const { content } = useContext(ContentContext);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -15,9 +17,9 @@ function AnnouncementBar({ onOpenModal }) {
       <div className="announcement-content">
         <span className="announcement-icon">📢</span>
         <div className="announcement-text">
-          <strong>We're back!</strong> The Cocoon Edition starts Monday, December 1, 2025.{' '}
+          {content.announcementText}{' '}
           <button className="announcement-link" onClick={onOpenModal}>
-            Learn more
+            {content.announcementButtonText}
           </button>
         </div>
         <button className="announcement-close" onClick={handleClose} aria-label="Close announcement">

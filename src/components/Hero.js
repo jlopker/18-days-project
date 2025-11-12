@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Hero.css';
 import { Scribble, PaperScrap, Circle, Leaf, Star, Dot, Swoosh, Underline } from './Decorations';
 import './Decorations.css';
+import { ContentContext } from '../context/ContentContext';
 
 function Hero({ onOpenModal }) {
+  const { content } = useContext(ContentContext);
+
   return (
     <section className="hero">
       {/* Top decorative elements */}
@@ -39,10 +42,10 @@ function Hero({ onOpenModal }) {
 
       {/* Main content */}
       <div className="hero-content">
-        <h2 className="hero-title">The 18 Days Project is a writing adventure to unleash your creativity HELLO</h2>
-        <p className="hero-subtitle">Generate new work. Get creative support. Make inspired progress.</p>
+        <h2 className="hero-title">{content.heroTitle}</h2>
+        <p className="hero-subtitle">{content.heroSubtitle}</p>
         <button className="hero-cta-button" onClick={onOpenModal}>
-          Cocoon Edition — December 1
+          {content.heroButtonText}
         </button>
       </div>
 
