@@ -5,7 +5,7 @@ export const ContentContext = createContext();
 const DEFAULT_CONTENT = {
   heroTitle: 'The 18 Days Project is a writing adventure to unleash your creativity',
   heroSubtitle: 'Generate new work. Get creative support. Make inspired progress.',
-  heroButtonText: 'Cocoon Edition — December 1',
+  heroButtonText: 'Cocoon Edition — starts December 1',
   announcementText: "We're back! The Cocoon Edition starts Monday, December 1, 2025",
   announcementButtonText: 'Learn more',
   faqTitle: 'Frequently Asked Questions',
