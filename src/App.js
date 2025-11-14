@@ -13,7 +13,7 @@ import WhoIsThis from './components/WhoIsThis';
 import Contact from './components/Contact';
 import AboutPage from './components/AboutPage';
 import QuoteBlock from './components/QuoteBlock';
-import FAQ from './components/FAQ';
+import FAQPage from './components/FAQPage';
 import Footer from './components/Footer';
 import WritingProcess from './components/WritingProcess';
 import Resources from './components/Resources';
@@ -33,7 +33,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
         <WhoIsThis />
         <Contact />
         <QuoteBlock />
-        <FAQ />
       </main>
     </>
   );
@@ -52,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/faq" element={<FAQPage />} />
             <Route path="/writing-process" element={
               <main>
                 <WritingProcess />
