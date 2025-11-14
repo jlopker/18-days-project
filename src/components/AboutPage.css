@@ -30,16 +30,24 @@
   font-weight: 700;
 }
 
-.creators-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+.creators-section {
   margin-top: 3rem;
-  max-width: 600px;
 }
 
-.creator-card {
-  text-align: center;
+.creator {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.creator:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .creator-image {
@@ -47,7 +55,6 @@
   aspect-ratio: 1;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,21 +64,84 @@
   object-fit: cover;
 }
 
-.creator-card h3 {
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
+.creator-info h2 {
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
   font-weight: 700;
   color: var(--text-dark);
-  margin: 0;
+  margin: 0 0 1rem 0;
+}
+
+.creator-info h3 {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.creator-info p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--text-light);
+  line-height: 1.8;
+  margin: 0 0 0.75rem 0;
+}
+
+.creator-info p:last-child {
+  margin-bottom: 0;
+}
+
+.creator-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem 0;
+}
+
+.creator-info li {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.creator-info a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.creator-info a:hover {
+  color: var(--accent-dark);
+  border-bottom-color: var(--accent-dark);
+}
+
+.location {
+  margin-bottom: 0.5rem;
+}
+
+.roles {
+  margin-bottom: 0.75rem;
 }
 
 @media (max-width: 768px) {
-  .creators-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .creator {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
-  .creator-card h3 {
+  .creator-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .creator-info h3 {
     font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  .creator-info p,
+  .creator-info li {
+    font-size: 0.95rem;
   }
 }
