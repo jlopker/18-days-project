@@ -89,11 +89,9 @@ function WritingProcess() {
               <li>When responding to your partner's piece, change the title to include your initials or some indicator. For instance: "mysistersaidCKcomments.doc."</li>
             </ul>
 
-            <Expander title="A note for you">
-              <p>
-                A note that applies to both feedback and writing: don't let the perfect be the enemy of the good.
-              </p>
-            </Expander>
+            <p>
+              A note that applies to both feedback and writing: don't let the perfect be the enemy of the good.
+            </p>
           </div>
         </div>
       </div>
