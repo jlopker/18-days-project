@@ -14,6 +14,7 @@ import WhoIsThis from './components/WhoIsThis';
 import Background from './components/Background';
 import Testimonial from './components/Testimonial';
 import Contact from './components/Contact';
+import QuoteBlock from './components/QuoteBlock';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import WritingProcess from './components/WritingProcess';
@@ -36,6 +37,7 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
         <Background />
         <Testimonial />
         <Contact />
+        <QuoteBlock />
         <FAQ />
       </main>
     </>

@@ -1,0 +1,48 @@
+.quote-block-section {
+  background: linear-gradient(135deg, #D4A5E6 0%, rgba(212, 165, 230, 0.1) 100%);
+  padding: 5rem var(--desktop-gutter);
+}
+
+.quote-block-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quote-block-quote {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.quote-block-quote p {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.quote-block-author {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-light);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .quote-block-section {
+    padding: 3rem var(--mobile-gutter);
+  }
+
+  .quote-block-quote p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .quote-block-author {
+    font-size: 0.9rem;
+  }
+}
