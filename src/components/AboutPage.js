@@ -46,7 +46,7 @@ function AboutPage() {
 
               <div className="creator">
                 <div className="creator-image">
-                  <img src="https://via.placeholder.com/300x300?text=Janet" alt="Janet Frishberg" />
+                  <img src="https://www.janetfrishberg.com/uploads/2/5/8/5/25859123/editor/img-3329-2.jpg?1605597488" alt="Janet Frishberg" />
                 </div>
                 <div className="creator-info">
                   <h2>Janet Frishberg</h2>
