@@ -27,7 +27,6 @@ function Footer() {
         <div className="footer-section">
           <h3>The 18 Days Project</h3>
           <p>A virtual writing adventure by Caroline & Janet</p>
-          <p><a href="mailto:18somethings@gmail.com">18somethings@gmail.com</a></p>
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
@@ -45,6 +44,7 @@ function Footer() {
           <ul className="social-links">
             <li><a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             <li><a href="https://the18somethingsproject.substack.com/" aria-label="Substack" target="_blank" rel="noopener noreferrer">Substack</a></li>
+            <li><a href="mailto:18somethings@gmail.com">18somethings@gmail.com</a></li>
           </ul>
         </div>
       </div>
