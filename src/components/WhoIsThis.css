@@ -14,10 +14,8 @@
   margin: 0;
 }
 
-.content-divider {
-  border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 2rem 0;
+.paragraph-spacing {
+  height: 1.5rem;
 }
 
 @media (max-width: 768px) {
