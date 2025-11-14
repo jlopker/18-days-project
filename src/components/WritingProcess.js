@@ -69,11 +69,9 @@ function WritingProcess() {
           <div className="process-section partnership-section">
             <h3>Optional: Partnership</h3>
 
-            <Expander title="Sign up for a partner">
-              <p>
-                For the Cocoon edition (December 2025), we are offering a spreadsheet (like a carpool spreadsheet!) where you can optionally sign up for a partner to either receive feedback or for accountability. You'll receive access to the spreadsheet when you sign up for this edition.
-              </p>
-            </Expander>
+            <p>
+              For the Cocoon edition (December 2025), we are offering a spreadsheet (like a carpool spreadsheet!) where you can optionally sign up for a partner to either receive feedback or for accountability. You'll receive access to the spreadsheet when you sign up for this edition.
+            </p>
 
             <h4>Partnership Guidelines</h4>
 
