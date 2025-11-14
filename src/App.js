@@ -10,7 +10,7 @@ import TestimonialHero from './components/TestimonialHero';
 import CurrentEdition from './components/CurrentEdition';
 import AnnouncementBar from './components/AnnouncementBar';
 import WhoIsThis from './components/WhoIsThis';
-import Contact from './components/Contact';
+import ContactPage from './components/ContactPage';
 import AboutPage from './components/AboutPage';
 import QuoteBlock from './components/QuoteBlock';
 import FAQPage from './components/FAQPage';
@@ -31,7 +31,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
       <TestimonialHero />
       <main>
         <WhoIsThis />
-        <Contact />
         <QuoteBlock />
       </main>
     </>
@@ -51,6 +50,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/writing-process" element={
               <main>

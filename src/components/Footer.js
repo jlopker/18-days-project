@@ -35,8 +35,8 @@ function Footer() {
             <li><Link to="/writing-process">Writing Process</Link></li>
             <li><Link to="/resources">Resources</Link></li>
             <li><Link to="/past-editions">Past Editions</Link></li>
-            <li><button onClick={() => handleScrollToSection('faq')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>FAQs</button></li>
-            <li><button onClick={() => handleScrollToSection('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit', textDecoration: 'underline' }}>Contact</button></li>
+            <li><Link to="/faq">FAQs</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
         <div className="footer-section">
