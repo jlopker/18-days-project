@@ -1,0 +1,48 @@
+.testimonial-hero-section {
+  background: linear-gradient(135deg, #9CBDE6 0%, rgba(156, 189, 230, 0.1) 100%);
+  padding: 5rem var(--desktop-gutter);
+}
+
+.testimonial-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonial-hero-quote {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.testimonial-hero-quote p {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.testimonial-hero-author {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-light);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .testimonial-hero-section {
+    padding: 3rem var(--mobile-gutter);
+  }
+
+  .testimonial-hero-quote p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-hero-author {
+    font-size: 0.9rem;
+  }
+}

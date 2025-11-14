@@ -6,6 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { ContentProvider } from './context/ContentContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import TestimonialHero from './components/TestimonialHero';
 import Welcome from './components/Welcome';
 import CurrentEdition from './components/CurrentEdition';
 import AnnouncementBar from './components/AnnouncementBar';
@@ -28,6 +29,7 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
   return (
     <>
       <Hero onOpenModal={() => setIsModalOpen(true)} />
+      <TestimonialHero />
       <main>
         <Welcome />
         <WhoIsThis />
