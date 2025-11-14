@@ -1,0 +1,31 @@
+.about-page {
+  width: 100%;
+}
+
+.about-page-section {
+  background: linear-gradient(135deg, var(--cream) 0%, rgba(232, 217, 204, 0.4) 100%);
+}
+
+.about-page-content {
+  margin-top: 2rem;
+}
+
+.about-page-mission {
+  max-width: 850px;
+}
+
+.about-page-mission p {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: var(--text-light);
+  line-height: 1.85;
+  margin: 0 0 1.5rem 0;
+}
+
+.about-page-mission p:last-child {
+  margin-bottom: 0;
+}
+
+.about-page-mission strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}

@@ -11,8 +11,8 @@ import Welcome from './components/Welcome';
 import CurrentEdition from './components/CurrentEdition';
 import AnnouncementBar from './components/AnnouncementBar';
 import WhoIsThis from './components/WhoIsThis';
-import Background from './components/Background';
 import Contact from './components/Contact';
+import AboutPage from './components/AboutPage';
 import QuoteBlock from './components/QuoteBlock';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
@@ -33,7 +33,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
       <main>
         <Welcome />
         <WhoIsThis />
-        <Background />
         <Contact />
         <QuoteBlock />
         <FAQ />
@@ -54,6 +53,7 @@ function App() {
           <CurrentEdition isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
           <Routes>
             <Route path="/" element={<HomePage isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/writing-process" element={
               <main>
                 <WritingProcess />
