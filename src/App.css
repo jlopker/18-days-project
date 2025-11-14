@@ -37,6 +37,33 @@ main {
 
 .section {
   animation: fadeInUp 0.6s ease-out;
+  padding: 6vw var(--desktop-gutter);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 3.5vw 0;
+  text-align: left;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5vw var(--mobile-gutter);
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+  }
 }
 
 /* Print styles */
