@@ -69,7 +69,6 @@ function ContactPage() {
             </div>
 
             <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
-              <h3>Send us a message</h3>
               <div className="form-group">
                 <label htmlFor="from_name">Name</label>
                 <input
