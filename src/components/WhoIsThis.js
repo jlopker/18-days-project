@@ -5,7 +5,7 @@ function WhoIsThis() {
   return (
     <section className="section who-is-this-section">
       <div className="section-container">
-        <h2 className="section-title">Who Is This For?</h2>
+        <h2 className="section-title">What Is This?</h2>
         <div className="who-is-this-content">
           <p>
             In 10 minutes a day, over the course of months or years, a person can accomplish a lot. 10 minutes a day can help overcome resistance and (re)build a writing muscle.
