@@ -58,7 +58,7 @@ function ContactPage() {
           <div className="contact-content">
             <div className="contact-info">
               <div className="info-box">
-                <p>For questions related to this edition, please email <a href="mailto:18somethings@gmail.com" target="_blank" rel="noopener noreferrer" className="email-link">18somethings@gmail.com</a> or use the form below.</p>
+                <p>For questions related to this edition, please email <a href="mailto:18somethings@gmail.com" target="_blank" rel="noopener noreferrer" className="email-link">18somethings@gmail.com</a> or use the form.</p>
               </div>
               <div className="info-box">
                 <p>If you would like to hear about upcoming editions, make sure you're on our email newsletter — you can sign up <a href="https://the18somethingsproject.substack.com/" target="_blank" rel="noopener noreferrer">here</a> (now hosted on Substack, not Tiny Letter).</p>
