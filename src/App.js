@@ -7,7 +7,6 @@ import { ContentProvider } from './context/ContentContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import TestimonialHero from './components/TestimonialHero';
-import Welcome from './components/Welcome';
 import CurrentEdition from './components/CurrentEdition';
 import AnnouncementBar from './components/AnnouncementBar';
 import WhoIsThis from './components/WhoIsThis';
@@ -31,7 +30,6 @@ function HomePage({ isModalOpen, setIsModalOpen }) {
       <Hero onOpenModal={() => setIsModalOpen(true)} />
       <TestimonialHero />
       <main>
-        <Welcome />
         <WhoIsThis />
         <Contact />
         <QuoteBlock />
