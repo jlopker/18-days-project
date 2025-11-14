@@ -20,7 +20,7 @@ function AboutPage() {
             <div className="creators-section">
               <div className="creator">
                 <div className="creator-image">
-                  <img src="https://via.placeholder.com/300x300?text=Caroline" alt="Caroline Kessler" />
+                  <img src="https://images.squarespace-cdn.com/content/v1/68239d34411ae666d424576c/7bd52410-1f35-4ced-8641-a1e50a94411b/more+formal+headshot+hi-res.jpeg?format=1000w" alt="Caroline Kessler" />
                 </div>
                 <div className="creator-info">
                   <h2>Caroline Kessler</h2>
