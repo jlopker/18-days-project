@@ -1,5 +1,6 @@
 import React from 'react';
 import './WritingProcess.css';
+import Expander from './Expander';
 
 function WritingProcess() {
   return (
@@ -10,73 +11,69 @@ function WritingProcess() {
           <div className="process-section">
             <h3>Our suggestions for writing</h3>
 
-            <div className="suggestion">
-              <strong>Write continuously</strong>
+            <Expander title="Write continuously">
               <p>
                 When you're writing, try to write as continuously as possible. You may have a thought in the middle, but keep the pen moving (or fingers on keyboard) through it all. Ten minutes is not a very long time 😉
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Use a timer</strong>
+            <Expander title="Use a timer">
               <p>
                 Using a timer (as opposed to just looking at the clock) is ideal.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Use the prompt as a starting point</strong>
+            <Expander title="Use the prompt as a starting point">
               <p>
                 You may use the prompt as a "stem," repeating it over and over again to keep you going. If you are stuck, you may also write, "I'm not sure what to write here." In the tradition of Natalie Goldberg's 'free writes', we recommend not crossing things out, not editing as you create, and not necessarily planning out what you will write.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Go with your first instinct</strong>
+            <Expander title="Go with your first instinct">
               <p>
                 It's best to do the prompt as soon as you see it, or if you see the prompt at a time when you can't write, try not to let your mind linger on it during the day. Thinking is not writing. Writing is writing.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Be as specific as possible</strong>
-            </div>
+            <Expander title="Be as specific as possible">
+              <p>
+                Be as specific as possible in your writing. Specific details make writing more engaging and memorable.
+              </p>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Adapt the prompt</strong>
+            <Expander title="Adapt the prompt">
               <p>
                 We also encourage adapting or changing the prompt—you may change the pronouns or tense of the prompt (for instance, if it says, "You go to the store," you can write a prompt about, "He was going to the store last week when…") It's also fine to completely deviate from the prompt, and not write about it at all, or write about whatever it brings to mind. The prompt is a place to start, not a strict rule.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Don't worry about finished work</strong>
+            <Expander title="Don't worry about finished work">
               <p>
                 This doesn't need to turn into anything. On the other hand, maybe it will turn into something. We recommend putting your writings away and not revisiting them for a few months. They'll look different to you three months from now and different again in a year.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Stay consistent</strong>
+            <Expander title="Stay consistent">
               <p>
                 Try not to miss any days. If you happen to, it's fine. Just get back on the horse and write two responses the next day. Or, you can continue past "Day 18" by just doing one response per day until you've caught up on the ones you missed.
               </p>
-            </div>
+            </Expander>
 
-            <div className="suggestion">
-              <strong>Organize as you like</strong>
+            <Expander title="Organize as you like">
               <p>
                 You might like to keep each write in a separate file, or keep them all in one file—up to you! Whatever keeps you best organized.
               </p>
-            </div>
+            </Expander>
           </div>
 
           <div className="process-section partnership-section">
             <h3>Optional: Partnership</h3>
 
-            <p>
-              For the Cocoon edition (December 2025), we are offering a spreadsheet (like a carpool spreadsheet!) where you can optionally sign up for a partner to either receive feedback or for accountability. You'll receive access to the spreadsheet when you sign up for this edition.
-            </p>
+            <Expander title="Sign up for a partner">
+              <p>
+                For the Cocoon edition (December 2025), we are offering a spreadsheet (like a carpool spreadsheet!) where you can optionally sign up for a partner to either receive feedback or for accountability. You'll receive access to the spreadsheet when you sign up for this edition.
+              </p>
+            </Expander>
 
             <h4>Partnership Guidelines</h4>
 
@@ -94,9 +91,11 @@ function WritingProcess() {
               <li>When responding to your partner's piece, change the title to include your initials or some indicator. For instance: "mysistersaidCKcomments.doc."</li>
             </ul>
 
-            <p className="closing-note">
-              A note that applies to both feedback and writing: don't let the perfect be the enemy of the good.
-            </p>
+            <Expander title="A note for you">
+              <p>
+                A note that applies to both feedback and writing: don't let the perfect be the enemy of the good.
+              </p>
+            </Expander>
           </div>
         </div>
       </div>
